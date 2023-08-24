@@ -52,7 +52,7 @@ stage('Docker Build and Push') {
 //-------------------------
 stage('Deployment Kubernetes  ') {
       steps {
-        withKubeConfig([credentialsId: 'config']) {
+        withKubeConfig([credentialsId: 'idkubernetes']) {
                sh "sed -i 's#replace#abeskik/devops-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
                sh "kubectl apply -f k8s_deployment_service.yaml"
              }
